@@ -185,7 +185,7 @@ class DocumentViewModel(
         (currentState as? DocumentUiState.Content)?.exportSheet
 
     private inline fun updateContent(
-        transform: (DocumentUiState.Content) -> DocumentUiState.Content,
+        crossinline transform: (DocumentUiState.Content) -> DocumentUiState.Content,
     ) {
         setState { state ->
             if (state is DocumentUiState.Content) transform(state) else state
