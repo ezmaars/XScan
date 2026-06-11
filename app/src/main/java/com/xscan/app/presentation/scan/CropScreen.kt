@@ -5,6 +5,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -207,7 +208,7 @@ private fun CropCanvas(
                 .fillMaxSize()
                 .pointerInput(imageRect, isProcessing) {
                     if (isProcessing) return@pointerInput
-                    androidx.compose.foundation.gestures.detectDragGestures(
+                    detectDragGestures(
                         onDragStart = { position ->
                             nearestCorner(position, quadToScreen(currentQuad, imageRect))
                                 ?.let { onEvent(CropEvent.CornerDragStarted(it)) }

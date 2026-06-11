@@ -86,7 +86,7 @@ class CropViewModel(
     }
 
     private inline fun updateAdjusting(
-        transform: (CropUiState.Adjusting) -> CropUiState.Adjusting,
+        crossinline transform: (CropUiState.Adjusting) -> CropUiState.Adjusting,
     ) {
         setState { state ->
             if (state is CropUiState.Adjusting && !state.isProcessing) transform(state) else state
